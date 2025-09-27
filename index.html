@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drone Video — Raimonds</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+    header { background: rgba(0,0,0,0.7); position: fixed; top:0; left:0; right:0; z-index:1000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { margin:0; color:#fff; font-size:20px; }
+    nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:600; }
+    nav a:hover { color:#22c55e; }
+    .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
+    .hero iframe { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border:none; }
+    .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color:#fff; }
+    .overlay h2 { font-size:42px; margin-bottom:20px; }
+    .btn { background:#22c55e; color:#fff; padding:15px 30px; border-radius:8px; font-size:18px; text-decoration:none; margin:10px; display:inline-block; }
+    .btn:hover { background:#16a34a; }
+    section { padding:60px 20px; max-width:1000px; margin:auto; }
+    footer { background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Drone Footage Store</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#buy">Buy</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <!-- ЗАМЕНИТЕ YOUTUBE_ID на ID вашего видео -->
+  <iframe src="https://www.youtube.com/watch?v=V9GzPNtoFqs&feature=youtu.be" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <div class="overlay">
+    <h2>Exclusive Drone Video</h2>
+    <a href="#buy" class="btn">Buy Now</a>
+    <a href="#about" class="btn" style="background:#38bdf8;">Learn More</a>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About this video</h2>
+  <p>This premium drone video was captured in stunning 4K quality. Perfect for presentations, creative projects, and commercial use. Once purchased, you will get lifetime access to the unlisted YouTube link and downloadable high-resolution files.</p>
+</section>
+
+<section id="buy">
+  <h2>Get Access</h2>
+  <p style="font-size:24px; font-weight:bold;">€49.00</p>
+  <a href="https://www.paypal.me/YOUR_PAYPAL/49" target="_blank" class="btn">Pay with PayPal</a>
+  <a href="mailto:yourmail@example.com?subject=Buy%20Drone%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:yourmail@example.com">yourmail@example.com</a></p>
+</section>
+
+<footer>
+  © 2025 Raimonds Matjušenoks — All rights reserved.
+</footer>
+
+</body>
+</html>
