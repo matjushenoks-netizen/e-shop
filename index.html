@@ -1,87 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Drone Video — Raimonds</title>
+  <meta charset="UTF-8">
+  <title>YouTube Embeds</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header { background: rgba(0,0,0,0.7); position: fixed; top:0; left:0; right:0; z-index:1000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { margin:0; color:#fff; font-size:20px; }
-    nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:600; }
-    nav a:hover { color:#22c55e; }
-    .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
-    .hero iframe { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border:none; }
-    .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color:#fff; }
-    .overlay h2 { font-size:48px; margin-bottom:20px; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-    .btn { background:#22c55e; color:#fff; padding:15px 30px; border-radius:8px; font-size:18px; text-decoration:none; margin:10px; display:inline-block; }
-    .btn:hover { background:#16a34a; }
-    section { padding:60px 20px; max-width:1000px; margin:auto; }
-    .video-block { margin-bottom:60px; }
-    .video-block iframe { width:100%; height:500px; border-radius:10px; border:none; }
-    footer { background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px; }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; }
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    iframe {
+      width: 560px;
+      height: 315px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
+  <h1>Мои видео</h1>
+  <div class="video-container">
+    
+    <!-- Видео 1 -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
 
-<header>
-  <h1>Drone Footage Store</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#buy">Buy</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <!-- Видео 2 -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
 
-<div class="hero">
-  <!-- Первое видео -->
-  <iframe 
-    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen>
-  </iframe>
-  <div class="overlay">
-    <h2>Dreams Come True</h2>
-    <a href="#buy" class="btn">Buy Now</a>
-    <a href="#about" class="btn" style="background:#38bdf8;">Learn More</a>
+    <!-- Видео 3 -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+
   </div>
-</div>
-
-<section id="about">
-  <h2>About these videos</h2>
-  <p>Exclusive drone video collection in stunning 4K. Perfect for film production, commercials, luxury branding, and private collectors. Lifetime access provided after purchase.</p>
-</section>
-
-<section id="buy">
-  <h2>Available Videos</h2>
-
-  <div class="video-block">
-    <h3>Video 1: Dreams Come True</h3>
-    <iframe src="https://www.youtube.com/embed/V9GzPNtoFqs" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€10,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/10000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Dreams%20Come%20True%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-  <div class="video-block">
-    <h3>Video 2: Sky Horizons</h3>
-    <iframe src="https://www.youtube.com/embed/ubFozQRSaHg" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€10,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/10000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Sky%20Horizons%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:matjushenoks@gmail.com">matjushenoks@gmail.com</a></p>
-</section>
-
-<footer>
-  © 2025 Raimonds Matjušenoks — All rights reserved.
-</footer>
-
 </body>
 </html>
-
