@@ -3,24 +3,187 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Matjushenoks — Raimonds</title>
+  <title>Matjushenoks — Raimonds</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header { background: rgba(0,0,0,0.7); position: fixed; top:0; left:0; right:0; z-index:1000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { margin:0; color:#fff; font-size:18px; font-weight:500; max-width:70%; }
-    nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:600; }
-    nav a:hover { color:#22c55e; }
-    .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
-    .hero iframe { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border:none; }
-    .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color:#fff; }
-    .overlay h2 { font-size:48px; margin-bottom:20px; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-    .btn { background:#22c55e; color:#fff; padding:15px 30px; border-radius:8px; font-size:18px; text-decoration:none; margin:10px; display:inline-block; }
-    .btn:hover { background:#16a34a; }
-    section { padding:60px 20px; max-width:1000px; margin:auto; }
-    .video-block { margin-bottom:60px; }
-    .video-block h3 { margin-bottom:15px; }
-    .video-block iframe { width:100%; height:500px; border-radius:10px; border:none; display:block; }
-    footer { background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: rgba(0,0,0,0.7);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      max-width: 70%;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #22c55e;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .overlay h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255,255,255,0.8);
+    }
+
+    .btn {
+      background: #22c55e;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-decoration: none;
+      margin: 10px;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #16a34a;
+    }
+
+    section {
+      padding: 80px 20px 60px;
+      max-width: 1000px;
+      margin: auto;
+      scroll-margin-top: 90px; /* чтобы header не закрывал заголовок */
+    }
+
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .video-block {
+      margin-bottom: 60px;
+    }
+
+    .video-block h3 {
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+
+    .video-frame {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      display: block;
+      /* адаптивное соотношение сторон */
+      aspect-ratio: 16 / 9;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0 15px;
+    }
+
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    /* Мобильные настройки */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 15px;
+      }
+
+      header h1 {
+        font-size: 14px;
+        max-width: 60%;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 12px;
+      }
+
+      .overlay h2 {
+        font-size: 32px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+      section {
+        padding: 80px 15px 50px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -35,10 +198,10 @@
 </header>
 
 <div class="hero">
-  <!-- Фоновое видео -->
-  <iframe 
-    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0" 
-    allow="autoplay; encrypted-media" 
+  <!-- Background video -->
+  <iframe
+    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0&modestbranding=1&showinfo=0"
+    allow="autoplay; encrypted-media"
     allowfullscreen>
   </iframe>
   <div class="overlay">
@@ -51,7 +214,8 @@
 <section id="about">
   <h2>About these videos</h2>
   <p>
-    Exclusive drone video collection in stunning 4K. Perfect for film production, commercials, luxury branding, and private collectors. Lifetime access provided after purchase.
+    Exclusive 4K drone video collection. Perfect for film production, commercials, luxury branding, and private collectors.
+    After purchase, you receive lifetime access to the original file.
   </p>
   <p>
     These are our unique moments of life — fleeting fragments of our earthly journey, with an unknown beginning and an uncertain end.
@@ -61,62 +225,14 @@
 <section id="buy">
   <h2>Available Videos</h2>
 
-  <!-- Видео 1 -->
+  <!-- Video 1 -->
   <div class="video-block">
     <h3>Video 1: Dreams Come True</h3>
-    <iframe src="https://www.youtube.com/embed/V9GzPNtoFqs" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€9,999</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/9999" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Dreams%20Come%20True%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-  <!-- Видео 2 -->
-  <div class="video-block">
-    <h3>Video 2: Sky Horizons</h3>
-    <iframe src="https://www.youtube.com/embed/ubFozQRSaHg" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€15,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/15000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Sky%20Horizons%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-  <!-- Видео 3 -->
-  <div class="video-block">
-    <h3>Video 3: City Lights</h3>
-    <iframe src="https://www.youtube.com/embed/xuPZOBcEzS4" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€10,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/10000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20City%20Lights%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-  <!-- Видео 4 -->
-  <div class="video-block">
-    <h3>Video 4: Golden Skies</h3>
-    <iframe src="https://www.youtube.com/embed/rOfdEA-PS14" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€24,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/24000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Golden%20Skies%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-  <!-- Видео 5 -->
-  <div class="video-block">
-    <h3>Video 5: Ocean Dreams</h3>
-    <iframe src="https://www.youtube.com/embed/ogQVj8pckRg" allowfullscreen></iframe>
-    <p style="font-size:24px; font-weight:bold;">€12,000</p>
-    <a href="https://www.paypal.me/YOUR_PAYPAL/12000" target="_blank" class="btn">Buy with PayPal</a>
-    <a href="mailto:matjushenoks@gmail.com?subject=Buy%20Ocean%20Dreams%20Video" class="btn" style="background:#fbbf24;">Contact me</a>
-  </div>
-
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:matjushenoks@gmail.com">matjushenoks@gmail.com</a></p>
-  <p>Instagram: <a href="https://www.instagram.com/matraimon/" target="_blank">@matraimon</a></p>
-</section>
-
-<footer>
-  © 2025 Raimonds Matjušenoks — All rights reserved.
-</footer>
-
-</body>
-</html>
+    <iframe
+      class="video-frame"
+      src="https://www.youtube.com/embed/V9GzPNtoFqs"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+    <p class="price">€9,999</p>
+    <p>Sunset aerial views capturing quiet hope and new beginnings. 4K resolution
