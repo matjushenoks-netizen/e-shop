@@ -1,434 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matjushenoks — Raimonds</title>
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: #f3f4f6;
-    }
-
-    a { color: inherit; }
-
-    header {
-      background: rgba(0,0,0,0.7);
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(6px);
-    }
-
-    header h1 {
-      margin: 0;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 500;
-      max-width: 70%;
-    }
-
-    nav a {
-      color: #fff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    nav a:hover { color: #22c55e; }
-
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .hero iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border: none;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at top, rgba(34,197,94,0.15), rgba(0,0,0,0.7));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
-
-    .overlay h2 {
-      font-size: 48px;
-      margin-bottom: 12px;
-      text-shadow: 0 0 18px rgba(255,255,255,0.9);
-    }
-
-    .overlay p {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 16px;
-      opacity: 0.9;
-    }
-
-    section {
-      padding: 80px 20px 60px;
-      max-width: 1100px;
-      margin: auto;
-      scroll-margin-top: 90px;
-    }
-
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 26px;
-    }
-
-    section p {
-      color: #d1d5db;
-      line-height: 1.6;
-    }
-
-    /* Блок с двумя большими карточками (Video / Photo) */
-    .choice-section {
-      padding-top: 50px;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
-      margin-top: 25px;
-    }
-
-    .choice-card {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: radial-gradient(circle at top left, #22c55e33, #020617);
-      min-height: 230px;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      text-decoration: none;
-      color: #f9fafb;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .choice-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-      border-color: #22c55e;
-    }
-
-    .choice-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.35;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .choice-card.video::before {
-      /* сюда можешь подставить любой кадр из видео */
-      background-image: url("https://i.ytimg.com/vi/V9GzPNtoFqs/maxresdefault.jpg");
-    }
-
-    .choice-card.photo::before {
-      /* сюда – красивый кадр с фото (потом заменишь) */
-      background-image: url("https://images.pexels.com/photos/34088/pexels-photo.jpg");
-    }
-
-    .choice-card:hover::before {
-      opacity: 0.55;
-    }
-
-    .choice-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .choice-label {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #a5b4fc;
-      margin-bottom: 6px;
-    }
-
-    .choice-title {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .choice-desc {
-      font-size: 14px;
-      color: #e5e7eb;
-    }
-
-    .video-block {
-      margin-bottom: 50px;
-    }
-
-    .video-block h3 {
-      margin-bottom: 12px;
-      margin-top: 0;
-      font-size: 20px;
-    }
-
-    .video-frame {
-      width: 100%;
-      border-radius: 12px;
-      border: none;
-      aspect-ratio: 16 / 9;
-      display: block;
-    }
-
-    /* Фото-сетка */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
-
-    .photo-item {
-      position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: #020617;
-      min-height: 180px;
-    }
-
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .photo-item:hover img {
-      transform: scale(1.05);
-    }
-
-    .photo-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 10px 12px;
-      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-      font-size: 13px;
-      color: #f9fafb;
-    }
-
-    footer {
-      background: #020617;
-      color: #9ca3af;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 13px;
-      border-top: 1px solid #111827;
-    }
-
-    @media (max-width: 900px) {
-      .choice-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 15px; }
-      header h1 { font-size: 14px; max-width: 60%; }
-      nav a { margin-left: 10px; font-size: 12px; }
-      .overlay h2 { font-size: 32px; }
-      .overlay p { font-size: 14px; }
-      section { padding: 80px 16px 50px; }
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Little moments of our lives</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#choice">Explore</a>
-    <a href="#videos">Videos</a>
-    <a href="#photos">Photos</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <iframe
-    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0&modestbranding=1&showinfo=0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
-  <div class="overlay">
-    <h2>Dreams Come True</h2>
-    <p>One lifetime, many skies. I capture small pieces of this journey and leave them here.</p>
-  </div>
-</div>
-
-<section id="about">
-  <h2>About</h2>
-  <p>
-    I capture and share unique fragments of life — small, beautiful moments that exist only once.
-  </p>
-  <p>
-    These 4K drone videos and photographs are quiet memories of cities, oceans, sunsets and horizons.
-    They are pieces of our journey, with an unknown beginning and an uncertain end.
-  </p>
-</section>
-
-<!-- Две большие кликабельные карточки: Video / Photo -->
-<section id="choice" class="choice-section">
-  <h2>Explore my work</h2>
-  <p>Choose where to go next — moving pictures or frozen moments.</p>
-
-  <div class="choice-grid">
-    <!-- Карточка Video -->
-    <a href="#videos" class="choice-card video">
-      <div class="choice-content">
-        <div class="choice-label">Collection</div>
-        <div class="choice-title">Video Moments</div>
-        <div class="choice-desc">
-          Drone flights, cities at night, oceans, golden skies. Stories told in motion.
-        </div>
-      </div>
-    </a>
-
-    <!-- Карточка Photo -->
-    <a href="#photos" class="choice-card photo">
-      <div class="choice-content">
-        <div class="choice-label">Collection</div>
-        <div class="choice-title">Photo Moments</div>
-        <div class="choice-desc">
-          Still frames from this journey — details, colors, and small pieces of everyday life.
-        </div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="videos">
-  <h2>Video Moments</h2>
-  <p>Some of the skies and places I’ve seen from above.</p>
-
-  <div class="video-block">
-    <h3>Dreams Come True</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/V9GzPNtoFqs"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>Sky Horizons</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ubFozQRSaHg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>City Lights</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/xuPZOBcEzS4"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>Golden Skies</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/rOfdEA-PS14"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>Ocean Dreams</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ogQVj8pckRg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
 <section id="photos">
   <h2>Photo Moments</h2>
-  <p>
-    A small selection of still frames. Later ты просто подставишь сюда свои фото.
-  </p>
+  <p>A small selection of still frames from my journey.</p>
 
   <div class="photo-grid">
-    <!-- Примеры, потом заменишь на свои изображения -->
+
+    <!-- Photo 1 -->
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/34088/pexels-photo.jpg" alt="Sky and horizon">
-      <div class="photo-caption">Sky & horizon</div>
+      <img src="https://drive.google.com/uc?export=view&id=1qqg5za7kgxzhXVknxkBIjJxMoqmGQkbO" alt="Photo 1">
+      <div class="photo-caption">Moment 1</div>
     </div>
 
+    <!-- Photo 2 -->
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg" alt="City lights">
-      <div class="photo-caption">City lights</div>
+      <img src="https://drive.google.com/uc?export=view&id=1v7dCsBOTZFSnOlz7PNz_WlWu3__C9lq_" alt="Photo 2">
+      <div class="photo-caption">Moment 2</div>
     </div>
 
+    <!-- Photo 3 -->
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg" alt="Ocean and rocks">
-      <div class="photo-caption">Ocean and rocks</div>
+      <img src="https://drive.google.com/uc?export=view&id=1bRixCFDzCImMJ6gyNcTw_btul7xnYr6X" alt="Photo 3">
+      <div class="photo-caption">Moment 3</div>
     </div>
 
+    <!-- Photo 4 -->
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="Golden sunset">
-      <div class="photo-caption">Golden sunset</div>
+      <img src="https://drive.google.com/uc?export=view&id=1We2X5mK7gM3uKleXHpAbpzSKNaYwXe0G" alt="Photo 4">
+      <div class="photo-caption">Moment 4</div>
     </div>
+
+    <!-- Photo 5 -->
+    <div class="photo-item">
+      <img src="https://drive.google.com/uc?export=view&id=15SKCazcYGvpIxxNKyAr01IdXsIg9sdCz" alt="Photo 5">
+      <div class="photo-caption">Moment 5</div>
+    </div>
+
+    <!-- Photo 6 -->
+    <div class="photo-item">
+      <img src="https://drive.google.com/uc?export=view&id=1eitMDaxINs8teCPD8TdAVPXvQM5AWTnn" alt="Photo 6">
+      <div class="photo-caption">Moment 6</div>
+    </div>
+
+    <!-- Photo 7 -->
+    <div class="photo-item">
+      <img src="https://drive.google.com/uc?export=view&id=1hn8YkdhAfRzwRpOCGNYnF46ZetJy1dlm" alt="Photo 7">
+      <div class="photo-caption">Moment 7</div>
+    </div>
+
   </div>
 </section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:matjushenoks@gmail.com">matjushenoks@gmail.com</a></p>
-  <p>Instagram: <a href="https://www.instagram.com/matraimon/" target="_blank">@matraimon</a></p>
-</section>
-
-<footer>
-  © 2025 Raimonds Matjušenoks — All rights reserved.
-</footer>
-
-</body>
-</html>
