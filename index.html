@@ -3,55 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> Matjushenoks — Raimonds</title>
+  <title>Matjushenoks — Raimonds</title>
+
   <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body { margin: 0; font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
-    header { background: rgba(0,0,0,0.7); position: fixed; top:0; left:0; right:0; z-index:1000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; }
-    header h1 { margin:0; color:#fff; font-size:18px; font-weight:500; max-width:70%; }
+
+    header {
+      background: rgba(0,0,0,0.7);
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      padding:15px 30px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    header h1 { margin:0; color:#fff; font-size:18px; font-weight:500; }
     nav a { color:#fff; margin-left:20px; text-decoration:none; font-weight:600; }
     nav a:hover { color:#22c55e; }
 
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
-    .hero iframe { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border:none; }
-    .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; color:#fff; padding:0 20px; }
-    .overlay h2 { font-size:48px; margin-bottom:20px; text-shadow:0 0 15px rgba(255,255,255,0.8); }
-
-    .btn { background:#22c55e; color:#fff; padding:15px 30px; border-radius:8px; font-size:18px; text-decoration:none; margin:10px; display:inline-block; }
-    .btn:hover { background:#16a34a; }
+    .hero iframe {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      object-fit:cover; border:none;
+    }
+    .overlay {
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0.4);
+      display:flex; justify-content:center; align-items:center;
+      flex-direction:column; color:#fff; text-align:center; padding:0 20px;
+    }
+    .overlay h2 { font-size:48px; margin:0 0 10px; text-shadow:0 0 12px rgba(255,255,255,0.8); }
+    .overlay p { font-size:16px; max-width:600px; }
 
     section { padding:60px 20px; max-width:1000px; margin:auto; }
-    .video-block { margin-bottom:60px; }
-    .video-block h3 { margin-bottom:15px; }
-    .video-block iframe { width:100%; height:500px; border-radius:10px; border:none; display:block; }
+    section h2 { margin-top:0; }
 
-    /* ФОТО-СЕТКА */
+    /* 2 большие карточки выбора */
+    .choice-grid {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:24px;
+      margin-top:20px;
+    }
+    .choice-card {
+      position:relative; border-radius:16px; overflow:hidden;
+      height:220px; padding:20px; display:flex; align-items:flex-end;
+      text-decoration:none; color:#111;
+      background:#fff; border:1px solid #ddd;
+      cursor:pointer;
+      transition:0.25s ease;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    }
+    .choice-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 15px 28px rgba(0,0,0,0.15);
+    }
+    .choice-card::before {
+      content:""; position:absolute; inset:0;
+      background-size:cover; background-position:center;
+      opacity:0.45;
+    }
+    .video-choice::before {
+      background-image:url("https://i.ytimg.com/vi/V9GzPNtoFqs/maxresdefault.jpg");
+    }
+    .photo-choice::before {
+      background-image:url("https://drive.google.com/uc?export=view&id=1qqg5za7kgxzhXVknxkBIjJxMoqmGQkbO");
+    }
+    .choice-content {
+      position:relative; background:rgba(255,255,255,0.9);
+      padding:10px 14px; border-radius:12px;
+    }
+    .choice-title { margin:0; font-size:20px; font-weight:bold; }
+    .choice-sub { margin:4px 0 0; font-size:13px; color:#555; }
+
+    /* Видео */
+    .video-block { margin-bottom:60px; }
+    .video-block iframe {
+      width:100%; height:500px; border:none; border-radius:10px;
+    }
+
+    /* Фото-сетка */
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap:20px;
+      margin-top:20px;
     }
     .photo-item img {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-      object-fit: cover;
+      width:100%; display:block; border-radius:10px;
+      object-fit:cover;
     }
-    .photo-caption {
-      margin-top: 6px;
-      font-size: 14px;
-      color: #555;
+    .photo-caption { margin-top:6px; font-size:14px; color:#555; }
+
+    footer {
+      background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px;
     }
 
-    footer { background:#111; color:#ccc; text-align:center; padding:20px; margin-top:40px; }
+    @media(max-width:800px) {
+      .choice-grid { grid-template-columns:1fr; }
+      .overlay h2 { font-size:32px; }
+    }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>I am sharing little moments of our lives</h1>
+  <h1>Little moments of our lives</h1>
   <nav>
     <a href="#about">About</a>
+    <a href="#choice">Explore</a>
     <a href="#videos">Videos</a>
     <a href="#photos">Photos</a>
     <a href="#contact">Contact</a>
@@ -59,104 +124,115 @@
 </header>
 
 <div class="hero">
-  <!-- Фоновое видео -->
   <iframe 
     src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen>
+    allow="autoplay; encrypted-media" allowfullscreen>
   </iframe>
   <div class="overlay">
     <h2>Dreams Come True</h2>
-    <a href="#videos" class="btn">Watch Videos</a>
-    <a href="#about" class="btn" style="background:#38bdf8;">Learn More</a>
+    <p>Fragments of a life captured from above — collected, preserved, remembered.</p>
   </div>
 </div>
 
 <section id="about">
-  <h2>About these videos</h2>
+  <h2>About</h2>
   <p>
-    Exclusive drone video collection in stunning 4K. Perfect for film production, commercials, branding, and for remembering small fragments of our journey.
+    I capture still and moving moments from above — skies, oceans, cities, details.
+    These frames are fragments of our journey, with an unknown beginning and an uncertain end.
   </p>
-  <p>
-    These are our unique moments of life — fleeting fragments of our earthly journey, with an unknown beginning and an uncertain end.
-  </p>
+</section>
+
+<section id="choice">
+  <h2>Choose where to go</h2>
+  <p>Moving stories or frozen frames — you decide.</p>
+
+  <div class="choice-grid">
+    <a href="#videos" class="choice-card video-choice">
+      <div class="choice-content">
+        <p class="choice-title">Video Moments</p>
+        <p class="choice-sub">Horizons, cities, motion, light.</p>
+      </div>
+    </a>
+
+    <a href="#photos" class="choice-card photo-choice">
+      <div class="choice-content">
+        <p class="choice-title">Photo Moments</p>
+        <p class="choice-sub">Still frames from the same journey.</p>
+      </div>
+    </a>
+  </div>
 </section>
 
 <section id="videos">
   <h2>Video Moments</h2>
 
-  <!-- Видео 1 -->
   <div class="video-block">
-    <h3>Video 1: Dreams Come True</h3>
+    <h3>Dreams Come True</h3>
     <iframe src="https://www.youtube.com/embed/V9GzPNtoFqs" allowfullscreen></iframe>
   </div>
 
-  <!-- Видео 2 -->
   <div class="video-block">
-    <h3>Video 2: Sky Horizons</h3>
+    <h3>Sky Horizons</h3>
     <iframe src="https://www.youtube.com/embed/ubFozQRSaHg" allowfullscreen></iframe>
   </div>
 
-  <!-- Видео 3 -->
   <div class="video-block">
-    <h3>Video 3: City Lights</h3>
+    <h3>City Lights</h3>
     <iframe src="https://www.youtube.com/embed/xuPZOBcEzS4" allowfullscreen></iframe>
   </div>
 
-  <!-- Видео 4 -->
   <div class="video-block">
-    <h3>Video 4: Golden Skies</h3>
+    <h3>Golden Skies</h3>
     <iframe src="https://www.youtube.com/embed/rOfdEA-PS14" allowfullscreen></iframe>
   </div>
 
-  <!-- Видео 5 -->
   <div class="video-block">
-    <h3>Video 5: Ocean Dreams</h3>
+    <h3>Ocean Dreams</h3>
     <iframe src="https://www.youtube.com/embed/ogQVj8pckRg" allowfullscreen></iframe>
   </div>
-
 </section>
 
-<!-- НОВЫЙ РАЗДЕЛ С ФОТО -->
 <section id="photos">
   <h2>Photo Moments</h2>
   <p>A small selection of still frames from my journey.</p>
 
   <div class="photo-grid">
+
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1qqg5za7kgxzhXVknxkBIjJxMoqmGQkbO" alt="Moment 1">
+      <img src="https://drive.google.com/uc?export=view&id=1qqg5za7kgxzhXVknxkBIjJxMoqmGQkbO">
       <div class="photo-caption">Moment 1</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1v7dCsBOTZFSnOlz7PNz_WlWu3__C9lq_" alt="Moment 2">
+      <img src="https://drive.google.com/uc?export=view&id=1v7dCsBOTZFSnOlz7PNz_WlWu3__C9lq_">
       <div class="photo-caption">Moment 2</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1bRixCFDzCImMJ6gyNcTw_btul7xnYr6X" alt="Moment 3">
+      <img src="https://drive.google.com/uc?export=view&id=1bRixCFDzCImMJ6gyNcTw_btul7xnYr6X">
       <div class="photo-caption">Moment 3</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1We2X5mK7gM3uKleXHpAbpzSKNaYwXe0G" alt="Moment 4">
+      <img src="https://drive.google.com/uc?export=view&id=1We2X5mK7gM3uKleXHpAbpzSKNaYwXe0G">
       <div class="photo-caption">Moment 4</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=15SKCazcYGvpIxxNKyAr01IdXsIg9sdCz" alt="Moment 5">
+      <img src="https://drive.google.com/uc?export=view&id=15SKCazcYGvpIxxNKyAr01IdXsIg9sdCz">
       <div class="photo-caption">Moment 5</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1eitMDaxINs8teCPD8TdAVPXvQM5AWTnn" alt="Moment 6">
+      <img src="https://drive.google.com/uc?export=view&id=1eitMDaxINs8teCPD8TdAVPXvQM5AWTnn">
       <div class="photo-caption">Moment 6</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://drive.google.com/uc?export=view&id=1hn8YkdhAfRzwRpOCGNYnF46ZetJy1dlm" alt="Moment 7">
+      <img src="https://drive.google.com/uc?export=view&id=1hn8YkdhAfRzwRpOCGNYnF46ZetJy1dlm">
       <div class="photo-caption">Moment 7</div>
     </div>
+
   </div>
 </section>
 
@@ -172,4 +248,3 @@
 
 </body>
 </html>
-
