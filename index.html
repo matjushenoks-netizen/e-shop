@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matjushenoks — Raimonds</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -23,9 +18,7 @@
     header {
       background: rgba(0,0,0,0.7);
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 15px 30px;
       display: flex;
@@ -50,9 +43,7 @@
       font-size: 14px;
     }
 
-    nav a:hover {
-      color: #22c55e;
-    }
+    nav a:hover { color: #22c55e; }
 
     .hero {
       position: relative;
@@ -63,20 +54,16 @@
 
     .hero iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
       border: none;
     }
 
     .overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.45);
       display: flex;
       justify-content: center;
@@ -93,28 +80,11 @@
       text-shadow: 0 0 15px rgba(255,255,255,0.8);
     }
 
-    .btn {
-      background: #22c55e;
-      color: #fff;
-      padding: 15px 30px;
-      border-radius: 8px;
-      font-size: 18px;
-      text-decoration: none;
-      margin: 10px;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #16a34a;
-    }
-
     section {
       padding: 80px 20px 60px;
       max-width: 1000px;
       margin: auto;
-      scroll-margin-top: 90px; /* чтобы header не закрывал заголовок */
+      scroll-margin-top: 90px;
     }
 
     section h2 {
@@ -135,15 +105,8 @@
       width: 100%;
       border-radius: 10px;
       border: none;
-      display: block;
-      /* адаптивное соотношение сторон */
       aspect-ratio: 16 / 9;
-    }
-
-    .price {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 10px 0 15px;
+      display: block;
     }
 
     footer {
@@ -155,50 +118,26 @@
       font-size: 14px;
     }
 
-    /* Мобильные настройки */
     @media (max-width: 768px) {
-      header {
-        padding: 10px 15px;
-      }
-
-      header h1 {
-        font-size: 14px;
-        max-width: 60%;
-      }
-
-      nav a {
-        margin-left: 10px;
-        font-size: 12px;
-      }
-
-      .overlay h2 {
-        font-size: 32px;
-      }
-
-      .btn {
-        font-size: 16px;
-        padding: 10px 20px;
-      }
-
-      section {
-        padding: 80px 15px 50px;
-      }
+      header { padding: 10px 15px; }
+      header h1 { font-size: 14px; max-width: 60%; }
+      nav a { margin-left: 10px; font-size: 12px; }
+      .overlay h2 { font-size: 32px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>I am sharing and selling little moments of our lives</h1>
+  <h1>Little moments of our lives</h1>
   <nav>
     <a href="#about">About</a>
-    <a href="#buy">Buy</a>
+    <a href="#videos">Videos</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <div class="hero">
-  <!-- Background video -->
   <iframe
     src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0&modestbranding=1&showinfo=0"
     allow="autoplay; encrypted-media"
@@ -206,33 +145,10 @@
   </iframe>
   <div class="overlay">
     <h2>Dreams Come True</h2>
-    <a href="#buy" class="btn">Buy Now</a>
-    <a href="#about" class="btn" style="background:#38bdf8;">Learn More</a>
   </div>
 </div>
 
 <section id="about">
-  <h2>About these videos</h2>
+  <h2>About</h2>
   <p>
-    Exclusive 4K drone video collection. Perfect for film production, commercials, luxury branding, and private collectors.
-    After purchase, you receive lifetime access to the original file.
-  </p>
-  <p>
-    These are our unique moments of life — fleeting fragments of our earthly journey, with an unknown beginning and an uncertain end.
-  </p>
-</section>
-
-<section id="buy">
-  <h2>Available Videos</h2>
-
-  <!-- Video 1 -->
-  <div class="video-block">
-    <h3>Video 1: Dreams Come True</h3>
-    <iframe
-      class="video-frame"
-      src="https://www.youtube.com/embed/V9GzPNtoFqs"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-    <p class="price">€9,999</p>
-    <p>Sunset aerial views capturing quiet hope and new beginnings. 4K resolution
+    I capture and share unique fragments of life —
