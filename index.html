@@ -107,10 +107,8 @@
       line-height: 1.6;
     }
 
-    /* Блок с двумя большими карточками (Video / Photo) */
-    .choice-section {
-      padding-top: 50px;
-    }
+    /* Explore Cards */
+    .choice-section { padding-top: 50px; }
 
     .choice-grid {
       display: grid;
@@ -152,24 +150,18 @@
       transition: opacity 0.25s ease;
     }
 
+    /* UPDATED — your photos */
     .choice-card.video::before {
-      /* сюда можешь подставить любой кадр из видео */
-      background-image: url("https://i.ytimg.com/vi/V9GzPNtoFqs/maxresdefault.jpg");
+      background-image: url("e-shop/photosphotos/Screenshot 2025-10-05 111012.png");
     }
 
     .choice-card.photo::before {
-      /* сюда – красивый кадр с фото (потом заменишь) */
-      background-image: url("https://images.pexels.com/photos/34088/pexels-photo.jpg");
+      background-image: url("e-shop/photosphotos/Screenshot 2025-10-05 111650.png");
     }
 
-    .choice-card:hover::before {
-      opacity: 0.55;
-    }
+    .choice-card:hover::before { opacity: 0.55; }
 
-    .choice-content {
-      position: relative;
-      z-index: 1;
-    }
+    .choice-content { position: relative; z-index: 1; }
 
     .choice-label {
       font-size: 13px;
@@ -190,16 +182,7 @@
       color: #e5e7eb;
     }
 
-    .video-block {
-      margin-bottom: 50px;
-    }
-
-    .video-block h3 {
-      margin-bottom: 12px;
-      margin-top: 0;
-      font-size: 20px;
-    }
-
+    /* Videos */
     .video-frame {
       width: 100%;
       border-radius: 12px;
@@ -208,7 +191,7 @@
       display: block;
     }
 
-    /* Фото-сетка */
+    /* Photo Grid */
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -233,15 +216,11 @@
       transition: transform 0.3s ease;
     }
 
-    .photo-item:hover img {
-      transform: scale(1.05);
-    }
+    .photo-item:hover img { transform: scale(1.05); }
 
     .photo-caption {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: 0; right: 0; bottom: 0;
       padding: 10px 12px;
       background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
       font-size: 13px;
@@ -263,17 +242,9 @@
         grid-template-columns: 1fr;
       }
     }
-
-    @media (max-width: 768px) {
-      header { padding: 10px 15px; }
-      header h1 { font-size: 14px; max-width: 60%; }
-      nav a { margin-left: 10px; font-size: 12px; }
-      .overlay h2 { font-size: 32px; }
-      .overlay p { font-size: 14px; }
-      section { padding: 80px 16px 50px; }
-    }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -289,7 +260,7 @@
 
 <div class="hero">
   <iframe
-    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0&modestbranding=1&showinfo=0"
+    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0"
     allow="autoplay; encrypted-media"
     allowfullscreen>
   </iframe>
@@ -301,134 +272,60 @@
 
 <section id="about">
   <h2>About</h2>
-  <p>
-    I capture and share unique fragments of life — small, beautiful moments that exist only once.
-  </p>
-  <p>
-    These 4K drone videos and photographs are quiet memories of cities, oceans, sunsets and horizons.
-    They are pieces of our journey, with an unknown beginning and an uncertain end.
-  </p>
+  <p>I capture and share unique fragments of life — small, beautiful moments that exist only once.</p>
+  <p>These 4K drone videos and photographs are memories of cities, oceans, sunsets and horizons.</p>
 </section>
 
-<!-- Две большие кликабельные карточки: Video / Photo -->
 <section id="choice" class="choice-section">
   <h2>Explore my work</h2>
   <p>Choose where to go next — moving pictures or frozen moments.</p>
 
   <div class="choice-grid">
-    <!-- Карточка Video -->
+
     <a href="#videos" class="choice-card video">
       <div class="choice-content">
         <div class="choice-label">Collection</div>
         <div class="choice-title">Video Moments</div>
-        <div class="choice-desc">
-          Drone flights, cities at night, oceans, golden skies. Stories told in motion.
-        </div>
+        <div class="choice-desc">Drone flights, cities at night, oceans, golden skies.</div>
       </div>
     </a>
 
-    <!-- Карточка Photo -->
     <a href="#photos" class="choice-card photo">
       <div class="choice-content">
         <div class="choice-label">Collection</div>
         <div class="choice-title">Photo Moments</div>
-        <div class="choice-desc">
-          Still frames from this journey — details, colors, and small pieces of everyday life.
-        </div>
+        <div class="choice-desc">Still frames from this journey — details, colors and life.</div>
       </div>
     </a>
+
   </div>
 </section>
 
 <section id="videos">
   <h2>Video Moments</h2>
-  <p>Some of the skies and places I’ve seen from above.</p>
 
   <div class="video-block">
     <h3>Dreams Come True</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/V9GzPNtoFqs"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/V9GzPNtoFqs" loading="lazy"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Sky Horizons</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ubFozQRSaHg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>City Lights</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/xuPZOBcEzS4"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>Golden Skies</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/rOfdEA-PS14"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <div class="video-block">
-    <h3>Ocean Dreams</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ogQVj8pckRg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/ubFozQRSaHg" loading="lazy"></iframe>
   </div>
 </section>
 
 <section id="photos">
   <h2>Photo Moments</h2>
-  <p>
-    A small selection of still frames. Later ты просто подставишь сюда свои фото.
-  </p>
+  <p>Your captured moments.</p>
 
   <div class="photo-grid">
-    <!-- Примеры, потом заменишь на свои изображения -->
+
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/34088/pexels-photo.jpg" alt="Sky and horizon">
-      <div class="photo-caption">Sky & horizon</div>
+      <img src="e-shop/photosphotos/Screenshot 2025-10-05 111012.png" alt="Photo 1">
+      <div class="photo-caption">Moment 1</div>
     </div>
 
     <div class="photo-item">
-      <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg" alt="City lights">
-      <div class="photo-caption">City lights</div>
-    </div>
-
-    <div class="photo-item">
-      <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg" alt="Ocean and rocks">
-      <div class="photo-caption">Ocean and rocks</div>
-    </div>
-
-    <div class="photo-item">
-      <img src="https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg" alt="Golden sunset">
-      <div class="photo-caption">Golden sunset</div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:matjushenoks@gmail.com">matjushenoks@gmail.com</a></p>
-  <p>Instagram: <a href="https://www.instagram.com/matraimon/" target="_blank">@matraimon</a></p>
-</section>
-
-<footer>
-  © 2025 Raimonds Matjušenoks — All rights reserved.
-</footer>
-
-</body>
-</html>
+      <img src="e-shop/photosphotos/Screenshot 2025-10-05 111650.png" alt="Photo 2">
+      <div class="photo-caption">Mo
