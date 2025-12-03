@@ -4,307 +4,262 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Matjushenoks — Raimonds</title>
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: #f3f4f6;
-    }
 
-    a { color: inherit; }
+<style>
+/* MAIN RESET */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    header {
-      background: rgba(0,0,0,0.7);
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(6px);
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0f;
+  color: #f3f4f6;
+}
 
-    header h1 {
-      margin: 0;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 500;
-      max-width: 70%;
-    }
+a { color: inherit; }
 
-    nav a {
-      color: #fff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-    }
+/* HEADER */
+header {
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(6px);
+}
 
-    nav a:hover { color: #22c55e; }
+header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
 
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
 
-    .hero iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border: none;
-    }
+nav a:hover { color: #22c55e; }
 
-    .overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at top, rgba(34,197,94,0.15), rgba(0,0,0,0.7));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-    .overlay h2 {
-      font-size: 48px;
-      margin-bottom: 12px;
-      text-shadow: 0 0 18px rgba(255,255,255,0.9);
-    }
+.hero iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border: none;
+}
 
-    .overlay p {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 16px;
-      opacity: 0.9;
-    }
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at top, rgba(34,197,94,0.15), rgba(0,0,0,0.7));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
 
-    section {
-      padding: 80px 20px 60px;
-      max-width: 1100px;
-      margin: auto;
-      scroll-margin-top: 90px;
-    }
+.overlay h2 {
+  font-size: 48px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 18px rgba(255,255,255,0.9);
+}
 
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 26px;
-    }
+/* MAIN SECTIONS */
+section {
+  padding: 80px 20px 60px;
+  max-width: 1100px;
+  margin: auto;
+  scroll-margin-top: 90px;
+}
 
-    section p {
-      color: #d1d5db;
-      line-height: 1.6;
-    }
+section h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
 
-    /* Explore Cards */
-    .choice-section { padding-top: 50px; }
+section p {
+  color: #d1d5db;
+  line-height: 1.6;
+}
 
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
-      margin-top: 25px;
-    }
+/* EXPLORE CARDS */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 25px;
+}
 
-    .choice-card {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: radial-gradient(circle at top left, #22c55e33, #020617);
-      min-height: 230px;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      text-decoration: none;
-      color: #f9fafb;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
+.choice-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(148,163,184,0.4);
+  background: radial-gradient(circle at top left, #22c55e33, #020617);
+  min-height: 230px;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: #f9fafb;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
 
-    .choice-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
-      border-color: #22c55e;
-    }
+.choice-card:hover {
+  transform: translateY(-6px);
+  border-color: #22c55e;
+}
 
-    .choice-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.35;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
+.choice-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  transition: opacity 0.25s ease;
+}
 
-    /* Backgrounds for cards */
-    .choice-card.video::before {
-      background-image: url("photosphotos/Screenshot 2025-10-05 111012.png");
-    }
+/* Preview images */
+.choice-card.video::before {
+  background-image: url("photosphotos/Screenshot 2025-10-05 111012.png");
+}
 
-    .choice-card.photo::before {
-      background-image: url("photosphotos/Screenshot 2025-10-05 111650.png");
-    }
+.choice-card.photo::before {
+  background-image: url("photosphotos/Screenshot 2025-10-05 111650.png");
+}
 
-    .choice-card:hover::before { opacity: 0.55; }
+.choice-card:hover::before { opacity: 0.55; }
 
-    .choice-content { position: relative; z-index: 1; }
+/* VIDEOS */
+.video-frame {
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  aspect-ratio: 16/9;
+  display: block;
+}
 
-    .choice-label {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #a5b4fc;
-      margin-bottom: 6px;
-    }
+.video-block { margin-bottom: 40px; }
 
-    .choice-title {
-      font-size: 22px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
+/* PHOTOS */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
 
-    .choice-desc {
-      font-size: 14px;
-      color: #e5e7eb;
-    }
+.photo-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,0.4);
+  background: #020617;
+  min-height: 180px;
+}
 
-    /* Videos */
-    .video-frame {
-      width: 100%;
-      border-radius: 12px;
-      border: none;
-      aspect-ratio: 16 / 9;
-      display: block;
-    }
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-    .video-block {
-      margin-bottom: 40px;
-    }
+.photo-item:hover img { transform: scale(1.05); }
 
-    /* Photo Grid */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
+.photo-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 10px 12px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  font-size: 13px;
+}
 
-    .photo-item {
-      position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: #020617;
-      min-height: 180px;
-    }
+/* CONTACT SECTION */
+.contact-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 20px;
+}
 
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+.contact-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: none; /* ❗ рамка отключена */
+}
 
-    .photo-item:hover img { transform: scale(1.05); }
+.contact-text p {
+  margin: 6px 0;
+}
 
-    .photo-caption {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      padding: 10px 12px;
-      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-      font-size: 13px;
-      color: #f9fafb;
-    }
+/* FOOTER */
+footer {
+  background: #020617;
+  color: #9ca3af;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 13px;
+  border-top: 1px solid #111827;
+}
 
-    /* Contact section */
-    .contact-wrapper {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-    .contact-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #22c55e;
-    }
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
 
-    .contact-text p {
-      margin: 4px 0;
-    }
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
 
-    footer {
-      background: #020617;
-      color: #9ca3af;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 13px;
-      border-top: 1px solid #111827;
-    }
+.lightbox-close:hover { color: #22c55e; }
 
-    @media (max-width: 900px) {
-      .choice-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Lightbox styles */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .lightbox-img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 25px;
-      right: 40px;
-      color: #fff;
-      font-size: 40px;
-      cursor: pointer;
-      user-select: none;
-      transition: 0.2s ease;
-    }
-
-    .lightbox-close:hover {
-      color: #22c55e;
-    }
-  </style>
+</style>
 </head>
 
 <body>
@@ -321,10 +276,8 @@
 </header>
 
 <div class="hero">
-  <iframe
-    src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
+  <iframe src="https://www.youtube.com/embed/V9GzPNtoFqs?autoplay=1&mute=1&loop=1&playlist=V9GzPNtoFqs&controls=0"
+    allow="autoplay; encrypted-media">
   </iframe>
   <div class="overlay">
     <h2>Let’s play life</h2>
@@ -334,17 +287,15 @@
 
 <section id="about">
   <h2>About</h2>
-  <p>Life is a moment — arriving from nowhere and disappearing into nowhere. The road we walk has no map, no clear destination, and none of us knows where death will wait for us.</p>
-  <p>When you remember this, everything in the world becomes small, fragile, almost weightless. And in that weightlessness comes clarity — a kind of awakening.</p>
-  <p>I capture these moments before they vanish: cities, oceans, horizons, and the silent truth behind them. In my videos and photographs, I try to preserve the only thing that truly exists — the present moment, before it slips away forever.</p>
+  <p>Life is a moment — arriving from nowhere and disappearing into nowhere.</p>
+  <p>I capture these moments before they vanish.</p>
 </section>
 
-<section id="choice" class="choice-section">
+<section id="choice">
   <h2>Explore my work</h2>
-  <p>Choose where to go next — moving pictures or frozen moments.</p>
+  <p>Choose where to go next — videos or photos.</p>
 
   <div class="choice-grid">
-
     <a href="#videos" class="choice-card video">
       <div class="choice-content">
         <div class="choice-label">Collection</div>
@@ -357,10 +308,9 @@
       <div class="choice-content">
         <div class="choice-label">Collection</div>
         <div class="choice-title">Photo Moments</div>
-        <div class="choice-desc">Still frames from this journey — details, colors and life.</div>
+        <div class="choice-desc">Still frames, colors and life.</div>
       </div>
     </a>
-
   </div>
 </section>
 
@@ -369,83 +319,47 @@
 
   <div class="video-block">
     <h3>Imagination</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ogQVj8pckRg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/ogQVj8pckRg"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Monte-Carlo</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/V9GzPNtoFqs"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/V9GzPNtoFqs"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Peace</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/ubFozQRSaHg"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/ubFozQRSaHg"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Alps</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/xuPZOBcEzS4"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/xuPZOBcEzS4"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Grindelwald</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/rOfdEA-PS14"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/rOfdEA-PS14"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Mahler</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/L8sfdHaDZhw"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/L8sfdHaDZhw"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Classics</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/AuNo93vEFEI"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/AuNo93vEFEI"></iframe>
   </div>
 
   <div class="video-block">
     <h3>Coastline</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/u1cetJGQxzk"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/u1cetJGQxzk"></iframe>
   </div>
 
   <div class="video-block">
     <h3>This Too Shall Pass — King Solomon</h3>
-    <iframe class="video-frame"
-      src="https://www.youtube.com/embed/xYuEgxdkalU"
-      loading="lazy"
-      allowfullscreen>
-    </iframe>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/xYuEgxdkalU"></iframe>
   </div>
 
 </section>
@@ -455,42 +369,40 @@
   <p>My art.</p>
 
   <div class="photo-grid">
-
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111012.png" alt="Photo 1">
+      <img src="photosphotos/Screenshot 2025-10-05 111012.png">
       <div class="photo-caption">Moment 1</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111712.png" alt="Photo 2">
+      <img src="photosphotos/Screenshot 2025-10-05 111650.png">
       <div class="photo-caption">Moment 2</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111828.png" alt="Photo 3">
+      <img src="photosphotos/Screenshot 2025-10-05 111712.png">
       <div class="photo-caption">Moment 3</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111650.png" alt="Photo 4">
+      <img src="photosphotos/Screenshot 2025-10-05 111828.png">
       <div class="photo-caption">Moment 4</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111850.png" alt="Photo 5">
+      <img src="photosphotos/Screenshot 2025-10-05 111850.png">
       <div class="photo-caption">Moment 5</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111913.png" alt="Photo 6">
+      <img src="photosphotos/Screenshot 2025-10-05 111913.png">
       <div class="photo-caption">Moment 6</div>
     </div>
 
     <div class="photo-item">
-      <img src="photosphotos/Screenshot 2025-10-05 111948.png" alt="Photo 7">
+      <img src="photosphotos/Screenshot 2025-10-05 111948.png">
       <div class="photo-caption">Moment 7</div>
     </div>
-
   </div>
 </section>
 
@@ -498,16 +410,14 @@
   <h2>Contact</h2>
 
   <div class="contact-wrapper">
-    <img
-      src="photosphotos/Screenshot 2025-12-03 222553.png"
-      alt="Raimonds Matjušenoks"
-      class="contact-photo"
-    >
+    <img src="photosphotos/Screenshot 2025-12-03 222553.png"
+         alt="Raimonds Matjušenoks"
+         class="contact-photo">
 
     <div class="contact-text">
       <p><strong>Raimonds Matjušenoks</strong></p>
       <p>Email: <a href="mailto:matjushenoks@gmail.com">matjushenoks@gmail.com</a></p>
-      <p>Instagram: <a href="https://www.instagram.com/matraimon" target="_blank">@matraimon</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/matraimon">@matraimon</a></p>
     </div>
   </div>
 </section>
@@ -516,39 +426,39 @@
   © 2025 Raimonds Matjušenoks — All rights reserved.
 </footer>
 
-<!-- Fullscreen Lightbox HTML -->
+<!-- LIGHTBOX FULLSCREEN -->
 <div id="lightbox" class="lightbox">
   <span class="lightbox-close">&times;</span>
-  <img id="lightbox-img" class="lightbox-img" src="">
+  <img id="lightbox-img" class="lightbox-img">
 </div>
 
 <script>
-  // Open image on click
-  document.querySelectorAll('.photo-item img').forEach(img => {
-    img.addEventListener('click', () => {
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').style.display = 'flex';
-    });
+// Open Lightbox
+document.querySelectorAll('.photo-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').style.display = 'flex';
   });
+});
 
-  // Close by X
-  document.querySelector('.lightbox-close').addEventListener('click', () => {
+// Close Lightbox
+document.querySelector('.lightbox-close').addEventListener('click', () => {
+  document.getElementById('lightbox').style.display = 'none';
+});
+
+// Click background to close
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) {
     document.getElementById('lightbox').style.display = 'none';
-  });
+  }
+});
 
-  // Close by clicking background
-  document.getElementById('lightbox').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  });
-
-  // Close by Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  });
+// ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+});
 </script>
 
 </body>
