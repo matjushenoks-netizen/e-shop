@@ -7,40 +7,7 @@
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    <!-- Fullscreen Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightbox-img" class="lightbox-img" src="">
-</div>
-
-<script>
-  // Open image
-  document.querySelectorAll('.photo-item img').forEach(img => {
-    img.addEventListener('click', () => {
-      document.getElementById('lightbox-img').src = img.src;
-      document.getElementById('lightbox').style.display = 'flex';
-    });
-  });
-
-  // Close image
-  document.querySelector('.lightbox-close').addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
-  });
-
-  // Close on background click
-  document.getElementById('lightbox').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  });
-
-  // Close with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-      document.getElementById('lightbox').style.display = 'none';
-    }
-  });
-</script>
+    
 
     body {
       margin: 0;
